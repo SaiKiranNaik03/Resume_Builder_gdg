@@ -1,17 +1,16 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const API_KEY = process.env.GEMINI_API_KEY; // Correct environment variable
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY; // Correct environment variable
 
 async function geminiResponse(prompt) {
+  console.log("Function called with prompt:", prompt);
+
   if (!prompt) {
-    console.error(
-      "❌ Prompt is missing. Please provide a prompt for the AI model."
-    );
+    console.error("❌ No prompt provided");
     return;
   }
 
   if (!API_KEY) {
-    console.error("❌ Google API Key is missing. Check your .env file.");
+    console.error("❌ Missing API Key");
     return;
   }
 
@@ -19,16 +18,27 @@ async function geminiResponse(prompt) {
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const result = await model.generateContent(
-      `Professional title: ${prompt}. Based on this, generate a professional summary for a resume.`
-    );
+    console.log("Generating content...");
+    const result = await model.generateContent(prompt);
 
-    const response = await result.response;
-    console.log(response.text()); // Corrected way to get the text response
+    if (!result) {
+      console.error("❌ No response from Gemini API");
+      return;
+    }
 
-    return response.text(); // Return the result for further usage
+    console.log("Raw result:", result); // Debugging log
+
+    // Corrected way to extract text response
+    const responseText = result?.response?.text?.();
+    if (!responseText) {
+      console.error("❌ No text in API response");
+      return;
+    }
+
+    console.log("Gemini Response:", responseText);
+    return responseText; // Return the response text
   } catch (error) {
-    console.error("❌ Error fetching AI response:", error);
+    console.error("❌ Error:", error);
   }
 }
 

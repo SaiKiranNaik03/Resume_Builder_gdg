@@ -3,18 +3,21 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-        <img src={logo} alt="logo" className="h-5 w-auto" />
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 ">
+        <Link to="/" className="flex items-center space-x-2">
+          <img src={logo} alt="logo" className="h-6 w-auto" />
+          <h3 className="font-semibold text-lg">GDGC IARE</h3>
+        </Link>
         <ul className="flex space-x-6">
-          <li className="link">
-            <Link to="">Start</Link>
+          <li className="link hover:text-red-500 text-gray-600 font-bold">
+            <Link to="/input">Start</Link>
           </li>
-          <li>
-            <Link to="">About</Link>
+          <li className="link hover:text-blue-500 text-gray-600 font-bold">
+            <Link to="/">About</Link>
           </li>
-          <li>
+          <li className="link hover:text-green-500 text-gray-600 font-bold">
             <a href="https://github.com/gdsciare/" target="_blank">
-              github
+              GitHub
             </a>
           </li>
         </ul>
