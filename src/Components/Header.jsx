@@ -7,10 +7,10 @@ const Header = () => {
         <img src={logo} alt="logo" className="h-5 w-auto" />
         <ul className="flex space-x-6">
           <li className="link">
-            <Link to="/">Start</Link>
+            <Link to="">Start</Link>
           </li>
           <li>
-            <Link to="/">About</Link>
+            <Link to="">About</Link>
           </li>
           <li>
             <a href="https://github.com/gdsciare/" target="_blank">
