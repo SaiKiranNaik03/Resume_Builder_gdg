@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <div className="text-center h-96 flex flex-col justify-center items-center">
       <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
-        <span className="text-red-500">Ai</span>
+        <span className="text-red-500">AI</span>
         <span className="text-blue-500"> Based</span>
         <span className="text-green-500"> Resume</span>
         <span className="text-yellow-500"> Builder</span>
