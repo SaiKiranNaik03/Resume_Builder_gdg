@@ -3,16 +3,24 @@ import Home from "./pages/Home";
 import Header from "./Components/Header";
 import Template from "./Components/Tamplets";
 import About from "./Components/About";
+import Classical from "./Components/Classical";
+import Modern from "./Components/Modern";
+import Creative from "./Components/Creative";
+import Corporate from "./Components/Corporate";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        {/* <Header/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/templates" element={<Template/>} />
-          {/* <Route path="/about" element={<About/>} /> */}
+          <Route path="/about" element={<About/>} />
+          <Route path="/classical" element={<Classical/>} />
+          <Route path="/modern" element={<Modern/>} />
+          <Route path="/creative" element={<Creative/>} />
+          <Route path="/corporate" element={<Corporate/>} />
         </Routes>
       </BrowserRouter>
     </>
