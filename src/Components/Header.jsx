@@ -13,7 +13,7 @@ const Header = () => {
             <Link to="/input">Start</Link>
           </li>
           <li className="link hover:text-blue-500 text-gray-600 font-bold">
-            <Link to="/">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li className="link hover:text-green-500 text-gray-600 font-bold">
             <a href="https://github.com/gdsciare/" target="_blank">

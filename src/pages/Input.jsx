@@ -151,7 +151,7 @@ const Input = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-100 drop-shadow-xl rounded-md mt-6 mb-6">
-      <h2 className="text-2xl font-bold text-center mb-4">Resume Builder</h2>
+      <h2 className="font-semibold tracking-tight text-center text-3xl font-extrabold mb-4 text-blue-700 drop-shadow-lg">Resume Builder</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Personal Details */}
         <div className="bg-white p-4 rounded-md shadow flex flex-col space-y-4">
