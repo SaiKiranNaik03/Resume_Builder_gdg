@@ -6,7 +6,7 @@
   @apply border-red-500 focus:ring-red-500;
 }
 .btn-add {
-  @apply bg-blue-500 text-white px-4 py-2 rounded-md mt-2;
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md mt-2 cursor-pointer hover:bg-blue-600;
 }
 
 /* .btn-remove {
@@ -14,5 +14,5 @@
 } */
 
 .btn-submit {
-  @apply bg-green-500 text-white px-4 py-2 rounded-md w-full;
+  @apply bg-green-500 text-white px-4 py-2 rounded-md w-full hover:bg-green-600;
 }

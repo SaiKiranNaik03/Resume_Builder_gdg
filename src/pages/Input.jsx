@@ -4,7 +4,7 @@ import cross from "../../public/cross-mark-svgrepo-com.svg";
 import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Loader2 } from "lucide-react";
 const Input = () => {
   const navigate = useNavigate();
   const {
@@ -42,7 +42,7 @@ const Input = () => {
   const handleQuoteGenerate = async () => {
     setIsLoading(true);
     const prompt =
-      "Generate a quote for me to put in resume for a engineering student, return only the quote without any extra text,dont mention engineering let it just be a motivational quote.";
+      "Generate a concise and impactful motivational quote suitable for a resume.  Return only the quote without any additional text.";
     // Wait for API response
     try {
       const response = await geminiResponse(prompt); // Wait for API response
@@ -211,7 +211,16 @@ const Input = () => {
               onClick={handleQuoteGenerate}
               disabled={isLoading}
             >
-              {isLoading ? "Generating..." : "Generate"}
+              {isLoading ? (
+                <>
+                  <div className="flex items-center space-x-2">
+                    <Loader2 className="size-4 animate-spin" />
+                    <span className="text-sm">Generating...</span>
+                  </div>
+                </>
+              ) : (
+                "Generate"
+              )}
             </button>
           </div>
           {geminiQuote && (
@@ -362,7 +371,16 @@ const Input = () => {
                   className="btn-add"
                   disabled={isLoadingExp[index]} // Disable while loading
                 >
-                  {isLoadingExp[index] ? "Generating..." : "Generate"}
+                  {isLoadingExp[index] ? (
+                    <>
+                      <div className="flex items-center space-x-2">
+                        <Loader2 className="size-4 animate-spin" />
+                        <span className="text-sm">Generating...</span>
+                      </div>
+                    </>
+                  ) : (
+                    "Generate"
+                  )}
                 </button>
                 <button
                   type="button"
@@ -421,7 +439,16 @@ const Input = () => {
                   className="btn-add"
                   disabled={isLoadingProject[index]} // Disable while loading
                 >
-                  {isLoadingProject[index] ? "Generating..." : "Generate"}
+                  {isLoadingProject[index] ? (
+                    <>
+                      <div className="flex items-center space-x-2">
+                        <Loader2 className="size-4 animate-spin" />
+                        <span className="text-sm">Generating...</span>
+                      </div>
+                    </>
+                  ) : (
+                    "Generate"
+                  )}
                 </button>
                 <button
                   type="button"
@@ -495,7 +522,16 @@ const Input = () => {
                 className="btn-add"
                 disabled={isLoadingAward[index]} // Disable while loading
               >
-                {isLoadingAward[index] ? "Generating..." : "Generate"}
+                {isLoadingAward[index] ? (
+                  <>
+                    <div className="flex items-center space-x-2">
+                      <Loader2 className="size-4 animate-spin" />
+                      <span className="text-sm">Generating...</span>
+                    </div>
+                  </>
+                ) : (
+                  "Generate"
+                )}
               </button>
               <button
                 type="button"
