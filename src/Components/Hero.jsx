@@ -1,16 +1,24 @@
+import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
-    <div className="text-center h-96 flex flex-col justify-center items-center">
+    <div className="text-center h-screen flex flex-col justify-center items-center">
       <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
-        <span className="text-red-500">AI</span>
-        <span className="text-blue-500"> Based</span>
-        <span className="text-green-500"> Resume</span>
-        <span className="text-yellow-500"> Builder</span>
+        <br />
+        <span className="text-red-500">AI</span>{" "}
+        <span className="text-blue-500">Based</span>{" "}
+        <span className="text-green-500">Resume</span>{" "}
+        <span className="text-yellow-500">Builder</span>
+        <br />
       </h1>
-      <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-        lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua
-      </p>
+      <div className="text-gray-500 text-5xl font-semibold tracking-tight">
+        <Typewriter
+          words={["Google Developers Groups", "On campus IARE"]}
+          loop={false}
+          typeSpeed={100}
+          cursor
+        />
+      </div>
     </div>
   );
 };

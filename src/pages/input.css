@@ -1,0 +1,18 @@
+@import "tailwindcss";
+.input {
+  @apply w-full p-2 border border-gray-300 rounded-md;
+}
+.input.error {
+  @apply border-red-500 focus:ring-red-500;
+}
+.btn-add {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md mt-2;
+}
+
+/* .btn-remove {
+  @apply bg-red-500 text-white px-2 py-1 rounded-md;
+} */
+
+.btn-submit {
+  @apply bg-green-500 text-white px-4 py-2 rounded-md w-full;
+}
