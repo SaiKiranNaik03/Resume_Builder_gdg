@@ -5,7 +5,7 @@ import logo_gray from "../../public/gdg_logo_gray.png";
 
 const Footer = () => {
   return (
-    <footer className=" bottom-0 w-full bg-transparent shadow-md">
+    <footer className=" bottom-0 w-full bg-transparent shadow-md backdrop-blur-3xl ">
       <div className="flex flex-col md:flex-row items-center justify-between p-6 lg:px-8 mx-auto max-w-6xl">
         {/* Left Section - Organization Info */}
         <div className="space-y-2">

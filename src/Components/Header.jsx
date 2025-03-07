@@ -2,8 +2,8 @@ import logo from "../../public/gdg_logo.png";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <header>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 ">
+    <header className="backdrop-blur-3xl ">
+      <nav className="mx-auto  flex max-w-7xl items-center justify-between p-6 lg:px-8 ">
         <Link to="/" className="flex items-center space-x-2">
           <img src={logo} alt="logo" className="h-6 w-auto" />
           <h3 className="font-semibold text-lg">GDGC IARE</h3>

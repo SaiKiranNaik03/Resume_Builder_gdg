@@ -2,8 +2,8 @@ import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
-    <div className="text-center h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
+    <div className="text-center h-[85vh] flex flex-col justify-center items-center">
+      <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl drop-shadow-lg">
         <br />
         <span className="text-red-500">AI</span>{" "}
         <span className="text-blue-500">Based</span>{" "}

@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY; // Correct environment variable
-
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function geminiResponse(prompt) {
   console.log("Function called with prompt:", prompt);
 
