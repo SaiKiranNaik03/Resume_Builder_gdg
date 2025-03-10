@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const techStack = [
   { name: "React", image: "https://skillicons.dev/icons?i=react&theme=light" },
+  { name: "Vite", image: "https://skillicons.dev/icons?i=vite&theme=light" },
   { name: "Tailwind CSS", image: "https://skillicons.dev/icons?i=tailwind&theme=light" },
   { name: "JavaScript", image: "https://skillicons.dev/icons?i=javascript&theme=light" },
   { name: "Gemini API", image: "./images/gemini-icon.svg" },
-  { name: "Vite", image: "https://skillicons.dev/icons?i=vite&theme=light" },
-  { name: "Hosted on Vercel", image: "https://skillicons.dev/icons?i=vercel&theme=light" },
+  { name: "Vercel", image: "https://skillicons.dev/icons?i=vercel&theme=light" },
 ];
 
 const testimonials = [
@@ -84,7 +84,8 @@ export default function About() {
           {["AI-driven resume generation", "Tailored industry-specific suggestions", "ATS-friendly formatting", "Instant customization", "One-click PDF & Doc export", "User-friendly experience"].map((feature, index) => (
             <motion.li 
               key={index} 
-              className="flex items-center text-lg text-gray-900 bg-white p-6 rounded-lg shadow-lg border-l-4 border-red-500"
+              className="flex items-center text-lg text-gray-900 bg-white p-6 rounded-lg shadow-lg border-l-4"
+              style={{ borderColor: "rgb(239, 68, 68)" }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.2 }}
@@ -102,6 +103,7 @@ export default function About() {
               <motion.li 
                 key={index} 
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 border-blue-500"
+                style={{ borderColor: "rgb(59, 130, 246)" }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2 }}
@@ -124,7 +126,8 @@ export default function About() {
         {techStack.map((tech, index) => (
           <div
             key={index}
-            className="bg-white p-3 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 border-green-500 flex flex-col items-center"
+            className="bg-white p-3 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 flex flex-col items-center"
+            style={{ borderColor: "rgb(34, 197, 94)" }}
           >
             <img src={tech.image} alt={tech.name} className="w-16 h-16 mb-1" />
             <p className="text-center font-medium">{tech.name}</p>
@@ -143,19 +146,29 @@ export default function About() {
       href="https://gdg.community.dev/gdg-on-campus-institute-of-aeronautical-engineering-hyderabad-india/" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 border-yellow-500 text-center font-semibold text-lg text-gray-900 flex items-center justify-center gap-2"
+      className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 text-center font-semibold text-lg text-gray-900 flex items-center justify-center gap-2"
+      style={{ borderColor: "rgb(250, 204, 21)" }}
     >
-      
       Join Us or Know more!
+      <i className="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+    <a 
+      href="https://bento.me/gdgc24" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 text-center font-semibold text-lg text-gray-900 flex items-center justify-center gap-2"
+      style={{ borderColor: "rgb(250, 204, 21)" }}
+    >
+      Core Team(2024-2025) 
       <i className="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
     <a 
       href="https://gdgcblog.vercel.app/" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 border-yellow-500 text-center font-semibold text-lg text-gray-900 flex items-center justify-center gap-2"
+      style={{ borderColor: "rgb(250, 204, 21)" }}
+      className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 border-l-4 text-center font-semibold text-lg text-gray-900 flex items-center justify-center gap-2"
     >
-      
       Explore our blogs!
       <i className="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
@@ -163,7 +176,8 @@ export default function About() {
 </div>
         <div>
           <h2 className="text-3xl font-semibold mb-6 text-gray-900">Upcoming Projects</h2>
-          <motion.div className="p-6 bg-white rounded-lg shadow-lg animate-pulse border-l-4 mb-5 border-red-500">
+          <motion.div className="p-6 bg-white rounded-lg shadow-lg animate-pulse border-l-4 mb-5"
+          style={{ borderColor: "rgb(239, 68, 68)" }}>
             Events Management Portal (Coming Soon)
           </motion.div>
           <motion.div className="p-6 bg-white rounded-lg shadow-lg animate-pulse border-l-4 mb-5 border-red-500">
@@ -210,7 +224,7 @@ export default function About() {
           <div
             className="w-32 h-32 rounded-full shadow-xl p-1 relative"
             style={{
-              background: "linear-gradient(90deg, red, yellow, green, blue)",
+              background: "linear-gradient(90deg, rgb(239, 68, 68), rgb(250, 204, 21), rgb(34, 197, 94), rgb(59, 130, 246))",
               padding: "5px",
               borderRadius: "50%",
             }}
