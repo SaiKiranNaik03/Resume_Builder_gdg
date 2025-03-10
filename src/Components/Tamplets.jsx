@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-
+import { useLocation, useNavigate } from "react-router-dom";
 const Template = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
 
@@ -44,10 +44,43 @@ const Template = () => {
       image: "./public/images/resume.jpg",
     },
   ];
+  const location = useLocation();
+  const formData = location.state?.formData || {};
+  const navigate = useNavigate();
+
+  const handleUseTemplate = (selectedTemplate) => {
+    console.log("Selected Template:", selectedTemplate);
+    console.log("Form Data:", formData);
+
+    switch (selectedTemplate.id) {
+      case 1:
+        navigate("/classical", { state: { formData } });
+        break;
+      case 2:
+        navigate("/modern", { state: { formData } });
+        break;
+      case 3:
+        navigate("/creative", { state: { formData } });
+        break;
+      case 4:
+        navigate("/minimalist", { state: { formData } });
+        break;
+      case 5:
+        navigate("/corporate", { state: { formData } });
+        break;
+      case 6:
+        navigate("/infographic", { state: { formData } });
+        break;
+      default:
+        console.error("Invalid template selection");
+    }
+  };
 
   return (
     <div className="p-4  min-h-screen flex flex-col items-center">
-      <h1 className="font-semibold tracking-tight text-center text-4xl font-extrabold mb-5 text-blue-700 drop-shadow-lg">Choose Your Resume Template</h1>
+      <h1 className="font-semibold tracking-tight text-center text-4xl font-extrabold mb-5 text-blue-700 drop-shadow-lg">
+        Choose Your Resume Template
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {templates.map((template) => (
           <div

@@ -21,9 +21,12 @@ const NotFound = () => {
             </p>
           </div>
           <div>
-            <button className="bg-[#8AC732] text-white font-sans max-w-[146px] w-full h-[48px] rounded-[100px] font-medium text-sm">
+            <Link
+              to="/"
+              className="bg-[#8AC732] text-white font-sans max-w-[146px] w-full h-[48px] rounded-[100px] font-medium text-sm"
+            >
               Home Page
-            </button>
+            </Link>
           </div>
         </div>
       </div>

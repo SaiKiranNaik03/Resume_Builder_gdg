@@ -5,6 +5,7 @@ import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import { form, image, title } from "framer-motion/client";
 const Input = () => {
   const navigate = useNavigate();
   const {
@@ -24,6 +25,9 @@ const Input = () => {
         linkedin: "",
         github: "",
         quote: "",
+        image: "",
+        location: "",
+        title: "",
       },
       education: [{ institute: "", duration: "", domain: "", marks: "" }],
       skills: [{ skill: "", level: "" }],
@@ -33,6 +37,12 @@ const Input = () => {
       Awards: [{ name: "", description: "" }],
     },
   });
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]; // Get file
+    if (file) {
+      setValue("personalDetails.image", file, { shouldValidate: true }); // ✅ Store file in form
+    }
+  };
   const [geminiQuote, setGeminiQuote] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingExp, setIsLoadingExp] = useState({}); // Track loading per experience
@@ -146,12 +156,14 @@ const Input = () => {
   } = useFieldArray({ control, name: "Awards" });
   const onSubmit = (data) => {
     console.log(data);
-    navigate("/templates");
+    navigate("/templates", { state: { formData: data } });
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-100 drop-shadow-xl rounded-md mt-6 mb-6">
-      <h2 className="font-semibold tracking-tight text-center text-3xl font-extrabold mb-4 text-blue-700 drop-shadow-lg">Resume Builder</h2>
+      <h2 className="font-semibold tracking-tight text-center text-3xl font-extrabold mb-4 text-blue-700 drop-shadow-lg">
+        Resume Builder
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Personal Details */}
         <div className="bg-white p-4 rounded-md shadow flex flex-col space-y-4">
@@ -195,6 +207,26 @@ const Input = () => {
               {...register("personalDetails.github")}
               placeholder="GitHub Profile"
               type="url"
+              className="input"
+            />
+          </div>
+          <input
+            type="text"
+            placeholder="Professional Title eg. Software Engineer"
+            {...register("personalDetails.title")}
+            className="input"
+          />
+          <div className="flex space-x-2">
+            <input
+              onChange={handleImageUpload}
+              type="file"
+              accept="image/*"
+              className="input"
+            />
+            <input
+              {...register("personalDetails.location")}
+              placeholder="Address"
+              type="text"
               className="input"
             />
           </div>
