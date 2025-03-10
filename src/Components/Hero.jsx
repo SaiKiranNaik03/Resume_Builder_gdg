@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 const Hero = () => {
+  const colors = [
+    "rgb(239, 68, 68)",
+    "rgb(59, 130, 246)",
+    "rgb(34, 197, 94)",
+    "rgb(250, 204, 21)",
+  ];
+  const [borderColor, setBorderColor] = useState(colors[0]);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      index = (index + 1) % colors.length;
+      setBorderColor(colors[index]);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="text-center h-[85vh] flex flex-col justify-center items-center">
       <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl drop-shadow-lg">
@@ -30,4 +47,5 @@ const Hero = () => {
     </div>
   );
 };
+
 export default Hero;

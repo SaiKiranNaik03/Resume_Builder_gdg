@@ -10,74 +10,49 @@ const Template = () => {
       name: "Classic Resume",
       description:
         "A clean and professional layout with a traditional structure.",
-      image: "./public/images/classical.jpg",
+      image: "/images/classical.jpg",
+      disabled: false,
     },
     {
       id: 2,
       name: "Modern Resume",
       description: "A sleek, contemporary design with bold headers and icons.",
-      image: "./public/images/modern.jpg",
+      image: "/images/modern.jpg",
+      disabled: false,
     },
     {
       id: 3,
       name: "Creative Resume",
       description: "A visually engaging template with unique styling elements.",
-      image: "./public/images/creative.jpg",
+      image: "/images/creative.jpg",
+      disabled: false,
     },
     {
       id: 5,
       name: "Corporate Resume",
       description:
         "A structured template tailored for corporate professionals.",
-      image: "./public/images/corporate.jpg",
+      image: "/images/corporate.jpg",
+      disabled: false,
     },
     {
       id: 4,
       name: "Minimalist Resume",
       description: "A simple yet elegant design focusing on content clarity.",
-      image: "./public/images/resume.jpg",
+      image: "/images/soon.jpg",
+      disabled: true,
     },
     {
       id: 6,
       name: "Infographic Resume",
       description: "A visually rich resume featuring charts and icons.",
-      image: "./public/images/resume.jpg",
+      image: "/images/soon.jpg",
+      disabled: true,
     },
   ];
-  const location = useLocation();
-  const formData = location.state?.formData || {};
-  const navigate = useNavigate();
-
-  const handleUseTemplate = (selectedTemplate) => {
-    console.log("Selected Template:", selectedTemplate);
-    console.log("Form Data:", formData);
-
-    switch (selectedTemplate.id) {
-      case 1:
-        navigate("/classical", { state: { formData } });
-        break;
-      case 2:
-        navigate("/modern", { state: { formData } });
-        break;
-      case 3:
-        navigate("/creative", { state: { formData } });
-        break;
-      case 4:
-        navigate("/minimalist", { state: { formData } });
-        break;
-      case 5:
-        navigate("/corporate", { state: { formData } });
-        break;
-      case 6:
-        navigate("/infographic", { state: { formData } });
-        break;
-      default:
-        console.error("Invalid template selection");
-    }
-  };
 
   return (
-    <div className="p-4  min-h-screen flex flex-col items-center">
+    <div className="p-4 min-h-screen flex flex-col items-center">
       <h1 className="font-semibold tracking-tight text-center text-4xl font-extrabold mb-5 text-blue-700 drop-shadow-lg">
         Choose Your Resume Template
       </h1>
@@ -85,15 +60,19 @@ const Template = () => {
         {templates.map((template) => (
           <div
             key={template.id}
-            className="bg-white p-2 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
-            onClick={() => setSelectedTemplate(template)}
+            className={`bg-white p-2 rounded-xl shadow-lg transition-all ${
+              template.disabled
+                ? "grayscale opacity-50 cursor-not-allowed"
+                : "hover:shadow-xl cursor-pointer"
+            }`}
+            onClick={() => !template.disabled && setSelectedTemplate(template)}
           >
             <img
               src={template.image}
               alt={template.name}
               className="w-full h-auto object-contain rounded-lg"
             />
-            <div className="bg-gray-100 p-2 pt-0 rounded-lg flex items-center justify-between">
+            <div className="bg-gray-100 p-3 pt-0 rounded-lg flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold">{template.name}</h2>
                 <p className="text-gray-800">{template.description}</p>
@@ -102,8 +81,9 @@ const Template = () => {
                 className="bg-blue-600 ml-3 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleUseTemplate(template);
+                  if (!template.disabled) handleUseTemplate(template);
                 }}
+                disabled={template.disabled}
               >
                 Use
               </button>
@@ -126,7 +106,7 @@ const Template = () => {
               alt={selectedTemplate.name}
               className="w-full max-h-[85vh] object-contain rounded-lg"
             />
-            <div className=" flex items-center justify-between w-full px-4">
+            <div className="flex items-center justify-between w-full px-4">
               <h2 className="text-2xl font-semibold">
                 {selectedTemplate.name}
               </h2>
@@ -137,7 +117,6 @@ const Template = () => {
                 Use
               </button>
             </div>
-            {/* <p className="text-gray-600 mt-2 text-center">{selectedTemplate.description}</p> */}
           </div>
         </div>
       )}
