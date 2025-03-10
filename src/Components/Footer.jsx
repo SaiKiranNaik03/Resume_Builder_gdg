@@ -1,12 +1,12 @@
-import logo from "../../public/gdg_logo.png";
-import insta from "../../public/instagram-logo.png";
-import linkedin from "../../public/linkedin_logo.png";
-import logo_gray from "../../public/gdg_logo_gray.png";
+import logo from "/gdg_logo.png";
+import insta from "/instagram-logo.png";
+import linkedin from "/linkedin_logo.png";
+import logo_gray from "/GDG_logo_gray.png";
 
 const Footer = () => {
   return (
-    <footer className=" bottom-0 w-full bg-transparent shadow-md backdrop-blur-3xl ">
-      <div className="flex flex-col md:flex-row items-center justify-between p-6 lg:px-8 mx-auto max-w-6xl">
+    <footer className=" bottom-0 w-full bg-transparent shadow-md backdrop-blur-xl pb-1">
+      <div className="flex flex-col md:flex-row items-center justify-between p-6 lg:px-8 mx-auto max-w-6xl ">
         {/* Left Section - Organization Info */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
@@ -21,7 +21,7 @@ const Footer = () => {
             &nbsp;
             <a
               href="https://vishureddy.vercel.app"
-              className="text-blue-500 hover:underline"
+              className="text-blue-600 hover:underline"
             >
               About
             </a>
@@ -31,7 +31,7 @@ const Footer = () => {
             &nbsp;
             <a
               href="https://saikiran-dev.vercel.app"
-              className="text-blue-500 hover:underline"
+              className="text-blue-600 hover:underline"
             >
               About
             </a>
@@ -47,25 +47,24 @@ const Footer = () => {
                 href="https://www.instagram.com/gdgc.iare/"
                 className="text-sm text-gray-700 hover:text-blue-500 font-semibold"
               >
-                @gdgc.iare
+               @gdgc.iare
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <img src={linkedin} alt="LinkedIn" className="h-5" />
+              <img src={linkedin} alt="LinkedIn" className="h-6" />
               <a
                 href="https://www.linkedin.com/company/82561543/"
                 className="text-sm text-gray-700 hover:text-blue-500 font-semibold"
               >
-                GDGC IARE
+              GDGC IARE
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <img src={logo_gray} alt="GDG Community" className="h-5 w-5" />
+              <img src={logo_gray} alt="GDG Community" className="h-4 w-5" />
               <a
                 href="https://gdg.community.dev/"
                 className="text-sm text-gray-700 hover:text-blue-500 font-semibold"
-              >
-                gdg.community.dev
+              >gdg.community.dev
               </a>
             </div>
           </div>
