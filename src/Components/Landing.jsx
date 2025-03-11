@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-const Hero = () => {
+
+const Landing = () => {
   const colors = [
     "rgb(239, 68, 68)",
     "rgb(59, 130, 246)",
@@ -19,7 +20,6 @@ const Hero = () => {
     }, 500);
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div className="text-center h-[85vh] flex flex-col justify-center items-center">
       <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl drop-shadow-lg">
@@ -39,13 +39,19 @@ const Hero = () => {
       </div>
       <Link
         to="/input"
-        className="group mt-8 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-all flex items-center justify-evenly space-x-2 gap-2 "
+        className="mt-6 px-8 py-3 text-xl font-semibold text-gray-900 rounded-full transition-all hover:scale-105"
+        style={{
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderWidth: "4px",
+          borderStyle: "solid",
+          borderColor: borderColor,
+          transition: "border-color 0.5s ease-in-out",
+        }}
       >
-        Start Building
-        <ArrowRight size={24} />
+        Start Now <i className="fa-solid fa-arrow-right"></i>
       </Link>
     </div>
   );
 };
-
-export default Hero;
+export default Landing;

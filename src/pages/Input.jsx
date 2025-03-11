@@ -4,7 +4,7 @@ import cross from "../../public/cross-mark-svgrepo-com.svg";
 import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, Watch } from "lucide-react";
 import { form, image, title } from "framer-motion/client";
 const Input = () => {
   const navigate = useNavigate();
@@ -49,10 +49,15 @@ const Input = () => {
   const [isLoadingProject, setIsLoadingProject] = useState({}); // Track loading per project
   const [isLoadingAward, setIsLoadingAward] = useState({}); // Track loading per award
 
-  const handleQuoteGenerate = async () => {
+  const handleQuoteGenerate = async (title) => {
     setIsLoading(true);
-    const prompt =
-      "Generate a concise and impactful motivational quote suitable for a resume.  Return only the quote without any additional text.";
+    let prompt;
+    if (title != null) {
+      prompt = `iam a ${title}, Generate a concise and impactful motivational quote suitable for a resume.  Return only the quote without any additional text.`;
+    } else {
+      prompt =
+        " Generate a concise and impactful motivational quote suitable for a resume.  Return only the quote without any additional text.";
+    }
     // Wait for API response
     try {
       const response = await geminiResponse(prompt); // Wait for API response
@@ -240,7 +245,9 @@ const Input = () => {
             <button
               className="btn-add"
               type="button"
-              onClick={handleQuoteGenerate}
+              onClick={() =>
+                handleQuoteGenerate(watch("personalDetails.title"))
+              }
               disabled={isLoading}
             >
               {isLoading ? (

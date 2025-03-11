@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Template = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const location = useLocation();
+  const formData = location.state?.formData || {};
+  const navigate = useNavigate();
 
   const templates = [
     {
@@ -12,6 +15,7 @@ const Template = () => {
         "A clean and professional layout with a traditional structure.",
       image: "/images/classical.jpg",
       disabled: false,
+      to: "/classical",
     },
     {
       id: 2,
@@ -19,6 +23,7 @@ const Template = () => {
       description: "A sleek, contemporary design with bold headers and icons.",
       image: "/images/modern.jpg",
       disabled: false,
+      to: "/modern",
     },
     {
       id: 3,
@@ -26,6 +31,7 @@ const Template = () => {
       description: "A visually engaging template with unique styling elements.",
       image: "/images/creative.jpg",
       disabled: false,
+      to: "/creative",
     },
     {
       id: 5,
@@ -34,6 +40,7 @@ const Template = () => {
         "A structured template tailored for corporate professionals.",
       image: "/images/corporate.jpg",
       disabled: false,
+      to: "/corporate",
     },
     {
       id: 4,
@@ -50,6 +57,9 @@ const Template = () => {
       disabled: true,
     },
   ];
+  const handleClick = (to) => {
+    navigate(to, { state: { formData: formData } });
+  };
 
   return (
     <div className="p-4 min-h-screen flex flex-col items-center">
@@ -80,6 +90,7 @@ const Template = () => {
               <button
                 className="bg-blue-600 ml-3 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all cursor-pointer"
                 onClick={(e) => {
+                  handleClick(template.to);
                   e.stopPropagation();
                   if (!template.disabled) handleUseTemplate(template);
                 }}
@@ -111,8 +122,12 @@ const Template = () => {
                 {selectedTemplate.name}
               </h2>
               <button
+                on
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
-                onClick={() => handleUseTemplate(selectedTemplate)}
+                onClick={() => {
+                  handleClick(selectedTemplate.to);
+                  handleUseTemplate(selectedTemplate);
+                }}
               >
                 Use
               </button>
