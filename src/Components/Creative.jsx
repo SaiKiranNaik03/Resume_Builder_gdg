@@ -1,27 +1,21 @@
-import React from 'react';
-import { usePDF } from 'react-to-pdf';
-import { Download, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-
+import React from "react";
+import { usePDF } from "react-to-pdf";
+import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import DownloadButton from "./DownloadButton";
 function Creative() {
   const { toPDF, targetRef } = usePDF({
-    filename: 'resume.pdf'
+    filename: "resume.pdf",
   });
 
   return (
     <div className="min-h-screen p-8">
-      {/* Download Button */}
-      {/* <div className="fixed top-4 right-4">
-        <button
-          onClick={() => toPDF()}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          <Download size={20} />
-          Download PDF
-        </button>
-      </div> */}
+      <DownloadButton />
 
       {/* Resume Content */}
-      <div ref={targetRef} className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden">
+      <div
+        ref={targetRef}
+        className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden"
+      >
         {/* Header Section */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-8">
           <div className="flex items-start justify-between">
@@ -43,11 +37,17 @@ function Creative() {
                 </div>
               </div>
               <div className="flex gap-4 mt-4">
-                <a href="https://github.com" className="flex items-center gap-2 hover:text-blue-200">
+                <a
+                  href="https://github.com"
+                  className="flex items-center gap-2 hover:text-blue-200"
+                >
                   <Github size={20} />
                   GitHub
                 </a>
-                <a href="https://linkedin.com" className="flex items-center gap-2 hover:text-blue-200">
+                <a
+                  href="https://linkedin.com"
+                  className="flex items-center gap-2 hover:text-blue-200"
+                >
                   <Linkedin size={20} />
                   LinkedIn
                 </a>
@@ -66,7 +66,9 @@ function Creative() {
           <div className="col-span-1 space-y-6">
             {/* Education */}
             <section>
-              <h2 className="text-xl font-bold text-blue-800 mb-4">Education</h2>
+              <h2 className="text-xl font-bold text-blue-800 mb-4">
+                Education
+              </h2>
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold">Master of Computer Science</h3>
@@ -83,19 +85,27 @@ function Creative() {
 
             {/* Technical Skills */}
             <section>
-              <h2 className="text-xl font-bold text-blue-800 mb-4">Technical Skills</h2>
+              <h2 className="text-xl font-bold text-blue-800 mb-4">
+                Technical Skills
+              </h2>
               <div className="space-y-2">
                 <div>
                   <h3 className="font-semibold">Languages</h3>
-                  <p className="text-gray-600">JavaScript, TypeScript, Python, Java</p>
+                  <p className="text-gray-600">
+                    JavaScript, TypeScript, Python, Java
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Frontend</h3>
-                  <p className="text-gray-600">React, Vue.js, HTML5, CSS3, Tailwind</p>
+                  <p className="text-gray-600">
+                    React, Vue.js, HTML5, CSS3, Tailwind
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Backend</h3>
-                  <p className="text-gray-600">Node.js, Express, Django, Spring</p>
+                  <p className="text-gray-600">
+                    Node.js, Express, Django, Spring
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Database</h3>
@@ -106,14 +116,20 @@ function Creative() {
 
             {/* Certificates */}
             <section>
-              <h2 className="text-xl font-bold text-blue-800 mb-4">Certificates</h2>
+              <h2 className="text-xl font-bold text-blue-800 mb-4">
+                Certificates
+              </h2>
               <div className="space-y-2">
                 <div>
-                  <h3 className="font-semibold">AWS Certified Solutions Architect</h3>
+                  <h3 className="font-semibold">
+                    AWS Certified Solutions Architect
+                  </h3>
                   <p className="text-sm text-gray-500">2023</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold">Google Cloud Professional Developer</h3>
+                  <h3 className="font-semibold">
+                    Google Cloud Professional Developer
+                  </h3>
                   <p className="text-sm text-gray-500">2022</p>
                 </div>
               </div>
@@ -124,7 +140,9 @@ function Creative() {
           <div className="col-span-2 space-y-6">
             {/* Experience */}
             <section>
-              <h2 className="text-xl font-bold text-blue-800 mb-4">Experience</h2>
+              <h2 className="text-xl font-bold text-blue-800 mb-4">
+                Experience
+              </h2>
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between">
@@ -133,9 +151,16 @@ function Creative() {
                   </div>
                   <p className="text-gray-600">Google</p>
                   <ul className="list-disc list-inside text-gray-600 mt-2">
-                    <li>Led a team of 5 developers in building a cloud-native application</li>
-                    <li>Improved system performance by 40% through optimization</li>
-                    <li>Implemented CI/CD pipeline reducing deployment time by 60%</li>
+                    <li>
+                      Led a team of 5 developers in building a cloud-native
+                      application
+                    </li>
+                    <li>
+                      Improved system performance by 40% through optimization
+                    </li>
+                    <li>
+                      Implemented CI/CD pipeline reducing deployment time by 60%
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -146,8 +171,13 @@ function Creative() {
                   <p className="text-gray-600">Microsoft</p>
                   <ul className="list-disc list-inside text-gray-600 mt-2">
                     <li>Developed and maintained multiple microservices</li>
-                    <li>Collaborated with cross-functional teams to deliver features</li>
-                    <li>Mentored junior developers and conducted code reviews</li>
+                    <li>
+                      Collaborated with cross-functional teams to deliver
+                      features
+                    </li>
+                    <li>
+                      Mentored junior developers and conducted code reviews
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -159,7 +189,9 @@ function Creative() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold">E-commerce Platform</h3>
-                  <p className="text-gray-600">Full-stack application with React, Node.js, and MongoDB</p>
+                  <p className="text-gray-600">
+                    Full-stack application with React, Node.js, and MongoDB
+                  </p>
                   <ul className="list-disc list-inside text-gray-600 mt-2">
                     <li>Implemented real-time inventory management</li>
                     <li>Integrated payment gateway and order processing</li>
@@ -167,7 +199,9 @@ function Creative() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Task Management System</h3>
-                  <p className="text-gray-600">Vue.js and Django-based project management tool</p>
+                  <p className="text-gray-600">
+                    Vue.js and Django-based project management tool
+                  </p>
                   <ul className="list-disc list-inside text-gray-600 mt-2">
                     <li>Built drag-and-drop interface for task organization</li>
                     <li>Implemented real-time updates using WebSocket</li>
@@ -178,15 +212,21 @@ function Creative() {
 
             {/* Awards and Achievements */}
             <section>
-              <h2 className="text-xl font-bold text-blue-800 mb-4">Awards & Achievements</h2>
+              <h2 className="text-xl font-bold text-blue-800 mb-4">
+                Awards & Achievements
+              </h2>
               <div className="space-y-2">
                 <div>
                   <h3 className="font-semibold">Best Innovation Award</h3>
-                  <p className="text-gray-600">Google Internal Hackathon 2022</p>
+                  <p className="text-gray-600">
+                    Google Internal Hackathon 2022
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">1st Place</h3>
-                  <p className="text-gray-600">International Coding Competition 2021</p>
+                  <p className="text-gray-600">
+                    International Coding Competition 2021
+                  </p>
                 </div>
                 {/* <div>
                   <h3 className="font-semibold">Published Paper</h3>

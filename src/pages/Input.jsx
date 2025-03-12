@@ -4,10 +4,22 @@ import cross from "../../public/cross-mark-svgrepo-com.svg";
 import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2, Watch } from "lucide-react";
-import { form, image, title } from "framer-motion/client";
+import { Cross, Loader2, Watch, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 const Input = () => {
   const navigate = useNavigate();
+  const [date, setDate] = React.useState();
   const {
     register,
     control,
@@ -163,22 +175,66 @@ const Input = () => {
     console.log(data);
     navigate("/templates", { state: { formData: data } });
   };
+  // Animations
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay },
+    }),
+  };
+  const fadeInUp2 = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, delay },
+    }),
+  };
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-gray-100 drop-shadow-xl rounded-md mt-6 mb-6">
-      <h2 className="font-semibold tracking-tight text-center text-3xl font-extrabold mb-4 text-blue-700 drop-shadow-lg">
+    <motion.div
+      className="max-w-5xl mx-auto p-6 bg-white/10 backdrop-blur-xl shadow-xl rounded-lg mt-6 mb-6"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInUp}
+    >
+      <motion.h2
+        className="font-semibold text-center text-3xl font-extrabold mb-4 text-teal-500 drop-shadow-lg"
+        variants={fadeInUp}
+      >
         Resume Builder
-      </h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      </motion.h2>
+      <motion.form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-6 "
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
         {/* Personal Details */}
-        <div className="bg-white p-4 rounded-md shadow flex flex-col space-y-4">
-          <h3 className="text-lg font-semibold mb-2">Personal Details</h3>
-          <div className="flex space-x-2">
+        <motion.div
+          className="bg-white/0 p-4 rounded-md shadow-md backdrop-blur-lg flex flex-col space-y-4"
+          variants={fadeInUp}
+        >
+          <h3 className="text-lg text-teal-400 font-semibold mb-2">
+            Personal Details
+          </h3>
+          <motion.div className="flex space-x-2" variants={fadeInUp}>
             <input
               {...register("personalDetails.name")}
               placeholder="Full Name"
               type="text"
-              className="input"
+              className="input "
+              variants={fadeInUp}
             />
             <input
               {...register("personalDetails.phone")}
@@ -186,8 +242,8 @@ const Input = () => {
               type="tel"
               className="input"
             />
-          </div>
-          <div className="flex space-x-2">
+          </motion.div>
+          <motion.div className="flex space-x-2" variants={fadeInUp}>
             <input
               {...register("personalDetails.email")}
               placeholder="Email"
@@ -200,8 +256,8 @@ const Input = () => {
               type="url"
               className="input"
             />
-          </div>
-          <div className="flex space-x-2">
+          </motion.div>
+          <motion.div className="flex space-x-2" variants={fadeInUp}>
             <input
               {...register("personalDetails.linkedin")}
               placeholder="LinkedIn Profile"
@@ -214,14 +270,16 @@ const Input = () => {
               type="url"
               className="input"
             />
-          </div>
-          <input
+          </motion.div>
+
+          <motion.input
             type="text"
             placeholder="Professional Title eg. Software Engineer"
             {...register("personalDetails.title")}
             className="input"
           />
-          <div className="flex space-x-2">
+
+          <motion.div className="flex space-x-2" variants={fadeInUp}>
             <input
               onChange={handleImageUpload}
               type="file"
@@ -234,9 +292,9 @@ const Input = () => {
               type="text"
               className="input"
             />
-          </div>
-          <div className="flex space-x-2">
-            <textarea
+          </motion.div>
+          <motion.div className="flex space-x-2">
+            <motion.textarea
               {...register("personalDetails.quote")}
               placeholder="Quote"
               type="textArea"
@@ -261,37 +319,49 @@ const Input = () => {
                 "Generate"
               )}
             </button>
-          </div>
+          </motion.div>
           {geminiQuote && (
             <p className="text-sm text-gray-500">
               Generated Quote: {geminiQuote}
             </p>
           )}
-        </div>
+        </motion.div>
 
         {/* Education Section */}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Education</h3>
+        <motion.div
+          className="bg-white/0 p-4 rounded-md shadow-md backdrop-blur-lg"
+          variants={fadeInUp}
+        >
+          <h3 className="text-lg font-semibold text-teal-300">Education</h3>
           {eduFields.map((field, index) => (
-            <div key={field.id} className="flex flex-col space-y-2 mt-2">
-              <div className="flex space-x-2">
+            <motion.div
+              key={field.id}
+              className="flex flex-col space-y-2 "
+              variants={fadeInUp}
+            >
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <input
                   {...register(`education.${index}.institute`)}
                   placeholder="Institute"
-                  className="p-2 border border-gray-300 rounded-md w-1/2 h-10 mt-7"
+                  className="input p-2 bg-transparent border border-teal-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-500 transition-all duration-300 rounded-md w-1/2 h-10 mt-7"
                 />
                 <div className="flex flex-col space-y-1 w-1/2">
-                  <label htmlFor="duration">End date:</label>
+                  <label
+                    htmlFor="duration"
+                    className="text-teal-500 font-semibold"
+                  >
+                    End date:
+                  </label>
                   <input
                     {...register(`education.${index}.duration`)}
                     id="duration"
                     placeholder="Duration"
-                    className="p-2 border border-gray-300 rounded-md "
+                    className="p-2 text-white bg-transparent border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-500 transition-all duration-300 rounded-md "
                     type="date"
                   />
                 </div>
-              </div>
-              <div className="flex space-x-2">
+              </motion.div>
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <input
                   {...register(`education.${index}.domain`)}
                   placeholder="Domain"
@@ -307,32 +377,42 @@ const Input = () => {
                   onClick={() => removeEdu(index)}
                   className="btn-remove"
                 >
-                  <img src={cross} alt="" className="h-5 w-30 cursor-pointer" />
+                  <X className="text-teal-500 cursor-pointer" />
                 </button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-          <button type="button" onClick={() => addEdu({})} className="btn-add">
+          <button
+            type="button"
+            onClick={() => addEdu({})}
+            className="btn-add text-gray-500"
+          >
             + Add Education
           </button>
-        </div>
+        </motion.div>
 
         {/* Skills Section */}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Technical Skills</h3>
+        <motion.div className="section" variants={fadeInUp}>
+          <h3 className="text-lg font-semibold text-teal-400">
+            Technical Skills
+          </h3>
           {skillFields.map((field, index) => (
-            <div key={field.id} className="flex space-x-2 mt-2">
+            <motion.div
+              key={field.id}
+              className="flex space-x-2 mt-2"
+              variants={fadeInUp}
+            >
               {/* Skill Input */}
-              <div className="flex flex-col">
+              <motion.div className="flex flex-col w-full" variants={fadeInUp}>
                 <input
                   {...register(`skills.${index}.skill`)}
                   placeholder="Skill"
                   className="input"
                 />
-              </div>
+              </motion.div>
 
               {/* Level Input + Error */}
-              <div className="flex flex-col">
+              <motion.div className="flex flex-col" variants={fadeInUp}>
                 <input
                   {...register(`skills.${index}.level`, {
                     min: { value: 1, message: "Cannot be less than 1" },
@@ -346,11 +426,11 @@ const Input = () => {
                   }`}
                 />
                 {errors.skills?.[index]?.level && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-400 font-semibold text-sm mt-1">
                     {errors.skills[index].level.message}
                   </p>
                 )}
-              </div>
+              </motion.div>
 
               {/* Remove Button */}
               <button
@@ -358,9 +438,9 @@ const Input = () => {
                 onClick={() => removeSkill(index)}
                 className="btn-remove"
               >
-                <img src={cross} alt="" className="h-5 w-20 cursor-pointer" />
+                <X className="text-teal-500 cursor-pointer" />
               </button>
-            </div>
+            </motion.div>
           ))}
 
           {/* Add Skill Button */}
@@ -371,14 +451,18 @@ const Input = () => {
           >
             + Add Skill
           </button>
-        </div>
+        </motion.div>
 
         {/* Experience Section */}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Experience</h3>
+        <motion.div className="section" variants={fadeInUp}>
+          <h3 className="text-lg font-semibold text-teal-400">Experience</h3>
           {expFields.map((field, index) => (
-            <div key={field.id} className="flex flex-col space-y-2 mt-2">
-              <div className="flex space-x-2">
+            <motion.div
+              key={field.id}
+              className="flex flex-col space-y-2 mt-2"
+              variants={fadeInUp}
+            >
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <input
                   {...register(`experience.${index}.company`)}
                   placeholder="Company"
@@ -389,8 +473,8 @@ const Input = () => {
                   placeholder="Role"
                   className="input"
                 />
-              </div>
-              <div className="flex space-x-2">
+              </motion.div>
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <textarea
                   {...register(`experience.${index}.description`)}
                   placeholder="Description"
@@ -426,22 +510,26 @@ const Input = () => {
                   onClick={() => removeExp(index)}
                   className="btn-remove"
                 >
-                  <img src={cross} alt="" className="h-5 w-30 cursor-pointer" />
+                  <X className="text-teal-500 cursor-pointer" />
                 </button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
           <button type="button" onClick={() => addExp({})} className="btn-add">
             + Add Experience
           </button>
-        </div>
+        </motion.div>
 
         {/* Projects Section */}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Projects</h3>
+        <motion.div className="section" variants={fadeInUp}>
+          <h3 className="text-lg font-semibold text-teal-400">Projects</h3>
           {projectFields.map((field, index) => (
-            <div key={field.id} className="flex flex-col space-y-2 mt-2">
-              <div className="flex space-x-2">
+            <motion.div
+              key={field.id}
+              className="flex flex-col space-y-2 mt-2"
+              variants={fadeInUp}
+            >
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <input
                   {...register(`projects.${index}.name`)}
                   placeholder="Project Name"
@@ -458,8 +546,8 @@ const Input = () => {
                   className="input"
                   type="url"
                 />
-              </div>
-              <div className="flex space-x-2">
+              </motion.div>
+              <motion.div className="flex space-x-2" variants={fadeInUp}>
                 <textarea
                   {...register(`projects.${index}.description`)}
                   placeholder="Description"
@@ -494,10 +582,10 @@ const Input = () => {
                   onClick={() => removeProject(index)}
                   className="btn-remove"
                 >
-                  <img src={cross} alt="" className="h-5 w-30 cursor-pointer" />
+                  <X className="text-teal-500 cursor-pointer" />
                 </button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
           <button
             type="button"
@@ -506,13 +594,19 @@ const Input = () => {
           >
             + Add Project
           </button>
-        </div>
+        </motion.div>
 
         {/*certications*/}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Certifications</h3>
+        <motion.div className="section" variants={fadeInUp}>
+          <h3 className="text-lg font-semibold text-teal-400">
+            Certifications
+          </h3>
           {certFields.map((field, index) => (
-            <div key={field.id} className="flex space-x-2 mt-2">
+            <motion.div
+              key={field.id}
+              className="flex space-x-2 mt-2"
+              variants={fadeInUp}
+            >
               <input
                 {...register(`certifications.${index}.name`)}
                 placeholder="Certification Name"
@@ -529,19 +623,23 @@ const Input = () => {
                 onClick={() => removeCert(index)}
                 className="btn-remove"
               >
-                <img src={cross} alt="" className="h-5 w-30 cursor-pointer" />
+                <X className="text-teal-500 cursor-pointer" />
               </button>
-            </div>
+            </motion.div>
           ))}
           <button type="button" onClick={() => addCert({})} className="btn-add">
             Add certicate
           </button>
-        </div>
+        </motion.div>
         {/*Awards*/}
-        <div className="bg-white p-4 rounded-md shadow">
-          <h3 className="text-lg font-semibold">Awards</h3>
+        <motion.div variants={fadeInUp} className="section">
+          <h3 className="text-lg font-semibold text-teal-400">Awards</h3>
           {awardFields.map((field, index) => (
-            <div key={field.id} className="flex space-x-2 mt-2">
+            <motion.div
+              variants={fadeInUp}
+              key={field.id}
+              className="flex space-x-2 mt-2"
+            >
               <input
                 {...register(`Awards.${index}.name`)}
                 placeholder="Award Name"
@@ -577,9 +675,9 @@ const Input = () => {
                 onClick={() => removeAward(index)}
                 className="btn-remove"
               >
-                <img src={cross} alt="" className="h-5 w-30 cursor-pointer" />
+                <X className="text-teal-500 cursor-pointer" />
               </button>
-            </div>
+            </motion.div>
           ))}
           <button
             type="button"
@@ -588,15 +686,15 @@ const Input = () => {
           >
             + Add Award
           </button>
-        </div>
+        </motion.div>
 
         {/* Submit Button */}
 
         <button type="submit" className="btn-submit cursor-pointer">
           Generate Resume
         </button>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 export default Input;
