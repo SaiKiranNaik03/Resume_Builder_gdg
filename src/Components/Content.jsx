@@ -18,7 +18,7 @@ const staggerContainer = {
 const Content = () => {
   return (
     <motion.section
-      className="py-16 px-6 bg-gray-900 text-gray-300 mb-6"
+      className="py-16 px-6 bg-gray-900/50 text-gray-300 mb-6"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

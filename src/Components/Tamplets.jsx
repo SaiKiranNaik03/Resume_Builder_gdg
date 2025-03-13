@@ -220,7 +220,7 @@ const Template = () => {
 
   return (
     <motion.div
-      className="p-6 min-h-screen flex flex-col items-center bg-gray-900 font-semibold text-center text-5xl font-extrabold mb-5 text-teal-400 drop-shadow-lg"
+      className="p-6 min-h-screen flex flex-col items-center bg-gray-900/50 font-semibold text-center text-5xl font-extrabold mb-5 text-teal-400 drop-shadow-lg"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -235,11 +235,11 @@ const Template = () => {
       </motion.h1>
 
       {/* Template Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl bg-gray-900">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl bg-gray-900/20">
         {templates.map((template) => (
           <Card
             key={template.id}
-            className={`relative transition-all bg-gray-800 ${
+            className={`relative transition-all bg-gray-800/20 border border-transparent ${
               template.disabled
                 ? "grayscale opacity-50 cursor-not-allowed"
                 : "hover:shadow-lg hover:scale-[1.03] cursor-pointer"
@@ -253,7 +253,7 @@ const Template = () => {
                 className="w-full h-auto rounded-t-lg"
               />
             </CardHeader>
-            <CardContent className="p-4 bg-gray-800 text-white rounded-b-lg flex justify-between items-center">
+            <CardContent className="p-4 bg-gray-800/20 text-white rounded-b-lg flex justify-between items-center">
               <div>
                 <h2 className="text-xl font-semibold">{template.name}</h2>
                 <p className="text-gray-400 text-sm">{template.description}</p>

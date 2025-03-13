@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Users, ClipboardCheck, FileText, Star } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
+import { InteractiveHoverButton } from "@/Components/magicui/interactive-hover-button";
 // Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -27,7 +27,7 @@ const staggerContainer = {
 
 const Home = () => {
   return (
-    <div className="bg-gray-900 text-gray-300">
+    <div className=" text-gray-300">
       {/* Hero Section */}
       <Landing />
 
@@ -68,10 +68,10 @@ const Home = () => {
             },
           ].map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <Card className="bg-gray-800 border-gray-700 shadow-lg">
+              <Card className="bg-gray-800/50 border-gray-700 shadow-lg">
                 <CardHeader className="flex flex-col items-center">
                   <item.icon className="h-12 w-12 text-teal-400 mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-500">
+                  <h3 className="text-xl font-semibold text-teal-500">
                     {item.title}
                   </h3>
                 </CardHeader>
@@ -113,7 +113,7 @@ const Home = () => {
             },
           ].map((testimonial, index) => (
             <motion.div key={index} variants={slideInLeft}>
-              <Card className="bg-gray-800 border-gray-700 shadow-lg">
+              <Card className="bg-gray-800/50 border-gray-700 shadow-lg">
                 <CardHeader className="flex flex-col items-center">
                   <Star className="h-6 w-6 text-yellow-400 mb-2" />
                   <h4 className="text-lg font-semibold text-teal-400">
@@ -144,16 +144,9 @@ const Home = () => {
           Get started for free and create your perfect resume in minutes.
         </p>
         <motion.div whileTap={{ scale: 0.95 }}>
-          <Button
-            asChild
-            className="mt-6 px-8 py-3 text-lg font-medium bg-teal-500 hover:bg-teal-400 transition-all"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0px 0px 20px rgba(0, 255, 170, 0.5)",
-            }}
-          >
+          <InteractiveHoverButton className="mt-6 px-8 py-3 text-lg text-black font-medium bg-teal-500/90 hover:bg-teal-400 transition-all">
             <Link to="/input">Get Started</Link>
-          </Button>
+          </InteractiveHoverButton>
         </motion.div>
       </motion.section>
     </div>

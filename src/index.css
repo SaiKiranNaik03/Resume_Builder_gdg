@@ -3,6 +3,9 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+html {
+  scroll-behavior: smooth;
+}
 
 :root {
   --background: oklch(1 0 0);
@@ -120,5 +123,42 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Optional: Add a subtle pulse animation to the dock icons */
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.hover-pulse:hover {
+  animation: subtle-pulse 2s infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
