@@ -1,5 +1,4 @@
 import React from "react";
-import { usePDF } from "react-to-pdf";
 import {
   Download,
   Github,
@@ -15,9 +14,6 @@ import {
 import { useLocation } from "react-router-dom";
 import DownloadButton from "./DownloadButton";
 function Modern() {
-  const { toPDF, targetRef } = usePDF({
-    filename: "resume.pdf",
-  });
   const location = useLocation();
   const formData = location.state?.formData || {};
   return (
