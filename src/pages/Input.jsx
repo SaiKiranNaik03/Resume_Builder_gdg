@@ -1,6 +1,5 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import "./input.css";
-import cross from "../../public/cross-mark-svgrepo-com.svg";
 import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
