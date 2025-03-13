@@ -3,7 +3,7 @@ import Landing from "../Components/Landing";
 import Content from "../Components/Content";
 import { Link } from "react-router-dom";
 import { Users, ClipboardCheck, FileText, Star } from "lucide-react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card.jsx";
+import { Card, CardHeader, CardContent } from "@/Components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { InteractiveHoverButton } from "@/Components/magicui/interactive-hover-button.jsx";
 // Animation Variants
