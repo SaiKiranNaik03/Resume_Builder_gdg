@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { InteractiveHoverButton } from "./magicui/interactive-hover-button";
-import { LineShadowText } from "./magicui/line-shadow-text";
-import { BoxReveal } from "./magicui/box-reveal";
-import { TypingAnimation } from "./magicui/typing-animation";
+import { InteractiveHoverButton } from "./magicui/interactive-hover-button.jsx";
+import { LineShadowText } from "./magicui/line-shadow-text.jsx";
+import { BoxReveal } from "./magicui/box-reveal.jsx";
+import { TypingAnimation } from "./magicui/typing-animation.jsx";
 const Landing = () => {
   const colors = ["#00FFAA", "#00BFFF", "#FF5050", "#FFD000"];
   const textOptions = ["Effortless.", "Smart.", "Beautiful."];

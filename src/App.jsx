@@ -10,8 +10,8 @@ import Classical from "./Components/Classical";
 import Modern from "./Components/Modern";
 import Creative from "./Components/Creative";
 import Corporate from "./Components/Corporate";
-import { Dock, DockIcon } from "./Components/magicui/dock";
-import { ScrollProgress } from "./Components/magicui/scroll-progress";
+import { Dock, DockIcon } from "./Components/magicui/dock.jsx";
+import { ScrollProgress } from "./Components/magicui/scroll-progress.jsx";
 import { Home as HomeIcon, FileText, Info, Github } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

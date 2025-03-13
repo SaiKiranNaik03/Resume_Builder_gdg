@@ -4,19 +4,11 @@ import cross from "../../public/cross-mark-svgrepo-com.svg";
 import geminiResponse from "../service/geminiResponse";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Cross, Loader2, Watch, X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { motion } from "framer-motion";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 const Input = () => {
   const navigate = useNavigate();
   const [date, setDate] = React.useState();
