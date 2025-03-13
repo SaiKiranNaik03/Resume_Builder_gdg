@@ -10,7 +10,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog.jsx";
+} from "@/Components/ui/dialog.jsx";
 
 const Template = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
