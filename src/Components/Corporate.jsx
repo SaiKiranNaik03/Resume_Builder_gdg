@@ -1,14 +1,11 @@
 import React from "react";
-import { usePDF } from "react-to-pdf";
+
 import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { form } from "framer-motion/client";
 import DownloadButton from "./DownloadButton";
 
 function Corporate() {
-  const { toPDF, targetRef } = usePDF({
-    filename: "resume.pdf",
-  });
   const location = useLocation();
   const formData = location.state?.formData || {};
   const imageFile =
@@ -21,10 +18,7 @@ function Corporate() {
       <DownloadButton />
 
       {/* Resume Content */}
-      <div
-        ref={targetRef}
-        className="max-w-4xl w-full mx-auto bg-white rounded-lg"
-      >
+      <div className="max-w-4xl w-full mx-auto bg-white rounded-lg">
         {/* Header Section */}
         <div className="p-8 border-b border-slate-200">
           <div className="flex items-start justify-between">

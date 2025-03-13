@@ -1,21 +1,14 @@
 import React from "react";
-import { usePDF } from "react-to-pdf";
+
 import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import DownloadButton from "./DownloadButton";
 function Creative() {
-  const { toPDF, targetRef } = usePDF({
-    filename: "resume.pdf",
-  });
-
   return (
     <div className="min-h-screen p-8">
       <DownloadButton />
 
       {/* Resume Content */}
-      <div
-        ref={targetRef}
-        className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden"
-      >
+      <div className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden">
         {/* Header Section */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-8">
           <div className="flex items-start justify-between">

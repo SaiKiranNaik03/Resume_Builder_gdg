@@ -20,7 +20,7 @@ function Modern() {
     <div className="min-h-screen p-8">
       <DownloadButton />
       <div className="max-w-4xl mx-auto bg-white rounded-lg p-2">
-        <div ref={targetRef} className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Header Section */}
           <div className="bg-white rounded-t-xl shadow-lg p-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-bl-full opacity-50" />
