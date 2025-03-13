@@ -1,4 +1,4 @@
-import Image from "../../public/404.png";
+import Image from "/404.png";
 const NotFound = () => {
   return (
     <div className="h-[100vh]  items-center flex justify-center px-5 lg:px-0">

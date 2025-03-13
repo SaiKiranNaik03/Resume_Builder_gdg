@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../../public/gdg_White.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const logo = "/gdg_logo.png";
   return (
     <header
       className="sticky top-0 z-50 backdrop-blur-md bg-gray-900/50 border-b border-gray-800/20"
