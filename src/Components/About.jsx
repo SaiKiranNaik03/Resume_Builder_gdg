@@ -1,8 +1,8 @@
 import { CheckCircle, ArrowUpRightSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card.jsx";
-import { Button } from "@/components/ui/button.jsx";
+import { Card, CardHeader, CardContent } from "@/Components/ui/card.jsx";
+import { Button } from "@/Components/ui/button.jsx";
 import { BentoGrid, BentoCard } from "./magicui/bento-grid.jsx";
 import { FileText, PenLine, Layout, Download } from "lucide-react";
 import { InteractiveHoverButton } from "./magicui/interactive-hover-button.jsx";
